@@ -41,6 +41,7 @@ variable "default_ecs_ami" {
 variable "default_log_account_ids" {
   default = {
     us-east-1      = "127311923021"
+    us-east-2      = "033677994240"
     us-west-2      = "797873946194"
     us-west-1      = "027434742980"
     eu-west-1      = "156460612806"
