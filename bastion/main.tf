@@ -58,7 +58,7 @@ module "ami" {
 }
 
 resource "aws_instance" "bastion" {
-  ami                    = "${module.ami.ami_id}"
+  ami                    = "ami-5f2f0f3a" #ubuntu/images/hvm/ubuntu-trusty-14.04-amd64-server-20170629
   source_dest_check      = false
   instance_type          = "${var.instance_type}"
   subnet_id              = "${var.subnet_id}"
