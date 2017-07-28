@@ -226,11 +226,6 @@ module "ecs_cluster" {
   extra_cloud_config_content  = "${var.extra_cloud_config_content}"
 }
 
-module "elb" {
-  source    = "./elb"
-  name = "main-elb"
-}
-
 module "s3_logs" {
   source                  = "./s3-logs"
   name                    = "${var.name}"
