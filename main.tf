@@ -232,7 +232,7 @@ module "elb" {
   environment = "${var.environment}"
   port = "3000"
   security_groups = "${module.security_groups.external_elb},${module.security_groups.internal_elb}"
-  subnet_ids =  "${module.vpc.internal_subnets},${module.vpc.external_subnets}"
+  subnet_ids =  "${module.vpc.external_subnets}"
   dns_name = "${module.dns.name}"
   healthcheck = "/healthcheck"
   protocol = "HTTP"
