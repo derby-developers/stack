@@ -226,6 +226,20 @@ module "ecs_cluster" {
   extra_cloud_config_content  = "${var.extra_cloud_config_content}"
 }
 
+module "elb" {
+  source = "./elb"
+  name = "${var.name}-elb"
+  environment = "${var.environment}"
+  port = "3000"
+  security_groups = "${module.security_groups.external_elb},${module.security_groups.internal_elb}"
+  subnet_ids =  "${module.vpc.internal_subnets},${module.vpc.external_subnets}"
+  dns_name = "${module.dns.name}"
+  healthcheck = "/healthcheck"
+  protocol = "HTTP"
+  zone_id = "${module.dns.zone_id}"
+  log_bucket = "${module.s3_logs.id}"
+}
+
 module "s3_logs" {
   source                  = "./s3-logs"
   name                    = "${var.name}"
