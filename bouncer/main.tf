@@ -44,7 +44,7 @@ variable "log_bucket" {
 
 variable "healthcheck" {
   description = "healthcheck"
-  default = "TCP:5432"
+  default = TCP:5432
 }
 
 variable "container_port" {
