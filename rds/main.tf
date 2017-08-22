@@ -106,14 +106,14 @@ resource "aws_security_group" "main" {
     from_port       = "${var.port}"
     to_port         = "${var.port}"
     protocol        = "TCP"
-    security_groups = "${var.ingress_allow_security_groups}"
+    security_groups = "${join(",", var.ingress_allow_security_groups)}"
   }
 
   ingress {
     from_port   = "${var.port}"
     to_port     = "${var.port}"
     protocol    = "TCP"
-    cidr_blocks = "${var.ingress_allow_cidr_blocks}"
+    cidr_blocks = "${join(",", var.ingress_allow_cidr_blocks)}"
   }
 
   egress {
