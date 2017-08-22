@@ -106,14 +106,14 @@ resource "aws_security_group" "main" {
     from_port       = "${var.port}"
     to_port         = "${var.port}"
     protocol        = "TCP"
-    security_groups = ["${join(",", var.ingress_allow_security_groups)}"]
+    security_groups = ["${var.ingress_allow_security_groups}"]
   }
 
   ingress {
     from_port   = "${var.port}"
     to_port     = "${var.port}"
     protocol    = "TCP"
-    cidr_blocks = ["${join(",", var.ingress_allow_cidr_blocks)}"]
+    cidr_blocks = ["${var.ingress_allow_cidr_blocks}"]
   }
 
   egress {
@@ -131,7 +131,7 @@ resource "aws_security_group" "main" {
 resource "aws_db_subnet_group" "main" {
   name        = "${var.name}"
   description = "RDS subnet group"
-  subnet_ids  = ["${join(",", var.subnet_ids)}"]
+  subnet_ids  = ["${var.subnet_ids}"]
 }
 
 resource "aws_db_instance" "main" {
